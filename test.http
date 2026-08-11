@@ -1,0 +1,121 @@
+### REGISTER
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "name": "Test User",
+    "email": "testuser@gmail.com",
+    "password": "123456"
+}
+
+
+### LOGIN
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "testuser@gmail.com",
+    "password": "123456"
+}
+
+
+### PROTECTED ROUTE
+GET http://localhost:5000/api/protected
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhN2I3OWUwYWUyN2M1MTg0YmMwNjQ1MCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzg2NDc4NDg5LCJleHAiOjE3ODcwODMyODl9.NV81ZfuJoC9f4O8eWNHcRBLdLUJROIuBrBJmhcx76xc
+### CREATE LOST ITEM
+POST http://localhost:5000/api/items
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhN2I3OWUwYWUyN2M1MTg0YmMwNjQ1MCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzg2NDc4NDg5LCJleHAiOjE3ODcwODMyODl9.NV81ZfuJoC9f4O8eWNHcRBLdLUJROIuBrBJmhcx76xc
+
+{
+  "type": "lost",
+  "title": "Black Wallet",
+  "category": "Wallet",
+  "color": "Black",
+  "brand": "Puma",
+  "distinguishingMarks": "Small scratch on the front",
+  "description": "Black wallet containing ID cards",
+  "imageUrl": "",
+  "location": "College Library",
+  "date": "2026-08-11",
+  "rewardAmount": 500
+}
+### GET ALL ITEMS
+GET http://localhost:5000/api/items
+### GET SINGLE ITEM
+GET http://localhost:5000/api/items/6a7b81b69ce16e9d5192cb48
+### SEARCH BY TYPE - LOST
+GET http://localhost:5000/api/items?type=lost
+### SEARCH BY TYPE - FOUND
+GET http://localhost:5000/api/items?type=found
+### SEARCH BY CATEGORY
+GET http://localhost:5000/api/items?category=Wallet
+### SEARCH BY LOCATION
+GET http://localhost:5000/api/items?location=College
+### GENERAL SEARCH
+GET http://localhost:5000/api/items?search=Black
+### UPDATE ITEM
+PUT http://localhost:5000/api/items/6a7b81b69ce16e9d5192cb48
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhN2I3OWUwYWUyN2M1MTg0YmMwNjQ1MCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzg2NDc4NDg5LCJleHAiOjE3ODcwODMyODl9.NV81ZfuJoC9f4O8eWNHcRBLdLUJROIuBrBJmhcx76xc
+
+{
+  "title": "Black Puma Wallet - UPDATED",
+  "color": "Dark Black",
+  "location": "College Main Library",
+  "rewardAmount": 1000
+}
+### GET UPDATED ITEM
+GET http://localhost:5000/api/items/6a7b81b69ce16e9d5192cb48
+### CLOUDINARY IMAGE UPLOAD
+POST http://localhost:5000/api/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary123456
+
+------WebKitFormBoundary123456
+Content-Disposition: form-data; name="image"; filename="test.jpg"
+Content-Type: image/jpeg
+
+< ./test.jpg
+------WebKitFormBoundary123456--
+### TEST CLOUDINARY IMAGE UPLOAD
+
+POST http://localhost:5000/api/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary123456
+
+------WebKitFormBoundary123456
+Content-Disposition: form-data; name="image"; filename="test.jpg"
+Content-Type: image/jpeg
+
+< ./test.jpg
+------WebKitFormBoundary123456--
+### TEST CLOUDINARY IMAGE UPLOAD
+
+POST http://localhost:5000/api/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary123456
+
+------WebKitFormBoundary123456
+Content-Disposition: form-data; name="image"; filename="test.jpg"
+Content-Type: image/jpeg
+
+< ./test.jpg
+------WebKitFormBoundary123456--
+### CREATE LOST ITEM
+
+POST http://localhost:5000/api/items
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhN2I3OWUwYWUyN2M1MTg0YmMwNjQ1MCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzg2NDc4NDg5LCJleHAiOjE3ODcwODMyODl9.NV81ZfuJoC9f4O8eWNHcRBLdLUJROIuBrBJmhcx76xc
+
+{
+  "type": "lost",
+  "title": "Black Wallet",
+  "category": "Wallet",
+  "color": "Black",
+  "brand": "Leather",
+  "distinguishingMarks": "Small scratch on the front",
+  "description": "Black wallet lost near college",
+  "imageUrl": "https://res.cloudinary.com/sejzfa11/image/upload/v1786483574/lostfound-plus/w6va0idnn7sktep1k4rs.jpg",
+  "location": "College Canteen",
+  "date": "2026-08-11",
+  "rewardAmount": 500
+}
+
